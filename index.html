@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÎNREGISTRARE VICTORY CUP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>ÎNREGISTRARE VICTORY CUP</h2>
+    <br>
+    <input type="text" class="club" id="club" placeholder="Club" readonly required>
+    <br><br>
+    <h3 for="type">Sportiv/Echipă</h3>
+    <select id="type" class="custom-select">
+      <option value="sportiv">Sportiv</option>
+      <option value="echipa">Echipă</option>
+    </select>
+    
+    <form id="karateForm">
+      <!-- Formular pentru sportiv -->
+      <div id="sportivFields" class="form-section">
+        <h3>Sportiv</h3>
+        <select id="genderSportiv" required>
+          <option value="" disabled selected>Gen</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Feminin">Feminin</option>
+        </select>
+
+        <input type="text" id="name" placeholder="Nume" required>
+        <input type="number" id="age" placeholder="Vârstă" required>
+        <input type="number" id="kg" placeholder="Greutate (kg)" required>
+        
+        <select id="kyu" required>
+          <optgroup label="Kyu">
+            <option value="10 Kyu">10 Kyu</option>
+            <option value="9 Kyu">9 Kyu</option>
+            <option value="8 Kyu">8 Kyu</option>
+            <option value="7 Kyu">7 Kyu</option>
+            <option value="6 Kyu">6 Kyu</option>
+            <option value="5 Kyu">5 Kyu</option>
+            <option value="4 Kyu">4 Kyu</option>
+            <option value="3 Kyu">3 Kyu</option>
+            <option value="2 Kyu">2 Kyu</option>
+            <option value="1 Kyu">1 Kyu</option>
+          </optgroup>
+          <optgroup label="Dan">
+            <option value="1 Dan">1 Dan</option>
+            <option value="2 Dan">2 Dan</option>
+            <option value="3 Dan">3 Dan</option>
+            <option value="4 Dan">4 Dan</option>
+            <option value="5 Dan">5 Dan</option>
+            <option value="6 Dan">6 Dan</option>
+            <option value="7 Dan">7 Dan</option>
+            <option value="8 Dan">8 Dan</option>
+            <option value="9 Dan">9 Dan</option>
+            <option value="10 Dan">10 Dan</option>
+          </optgroup>
+        </select>
+
+        <h3>Probe</h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="proba" value="kata">Kata</label>
+          <label><input type="checkbox" name="proba" value="kumite">Kumite</label>
+          <label><input type="checkbox" name="proba" value="makiwara">Makiwara</label>
+          <label><input type="checkbox" name="proba" value="traseu">Traseu</label>
+        </div>
+      </div>
+      
+      <!-- Formular pentru echipa -->
+      <div id="echipaFields" class="form-section hidden">
+        <h3>Echipă</h3> 
+
+
+        <select id="genderEchipa" required>
+          <option value="" disabled selected>Gen echipă</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Feminin">Feminin</option>
+        </select>
+
+
+        <div class="team-member">
+          <br>
+          <h4>Sportiv 1</h4>
+          <input type="text" name="teamMember1" placeholder="Nume Membru 1" required>
+          <input type="number" name="age1" placeholder="Vârstă" required>
+          <input type="number" name="kg1" placeholder="Greutate (kg)" required>
+          <select name="kyu1" required>
+            <optgroup label="Kyu">
+              <option value="10 Kyu">10 Kyu</option>
+              <option value="9 Kyu">9 Kyu</option>
+              <option value="8 Kyu">8 Kyu</option>
+              <option value="7 Kyu">7 Kyu</option>
+              <option value="6 Kyu">6 Kyu</option>
+              <option value="5 Kyu">5 Kyu</option>
+              <option value="4 Kyu">4 Kyu</option>
+              <option value="3 Kyu">3 Kyu</option>
+              <option value="2 Kyu">2 Kyu</option>
+              <option value="1 Kyu">1 Kyu</option>
+            </optgroup>
+            <optgroup label="Dan">
+              <option value="1 Dan">1 Dan</option>
+              <option value="2 Dan">2 Dan</option>
+              <option value="3 Dan">3 Dan</option>
+              <option value="4 Dan">4 Dan</option>
+              <option value="5 Dan">5 Dan</option>
+              <option value="6 Dan">6 Dan</option>
+              <option value="7 Dan">7 Dan</option>
+              <option value="8 Dan">8 Dan</option>
+              <option value="9 Dan">9 Dan</option>
+              <option value="10 Dan">10 Dan</option>
+            </optgroup>
+          </select>
+        </div>
+        
+        <div class="team-member">
+          <br>
+          <h4>Sportiv 2</h4>
+          <input type="text" name="teamMember2" placeholder="Nume Membru 2" required>
+          <input type="number" name="age2" placeholder="Vârstă" required>
+          <input type="number" name="kg2" placeholder="Greutate (kg)" required>
+          <select name="kyu2" required>
+            <optgroup label="Kyu">
+              <option value="10 Kyu">10 Kyu</option>
+              <option value="9 Kyu">9 Kyu</option>
+              <option value="8 Kyu">8 Kyu</option>
+              <option value="7 Kyu">7 Kyu</option>
+              <option value="6 Kyu">6 Kyu</option>
+              <option value="5 Kyu">5 Kyu</option>
+              <option value="4 Kyu">4 Kyu</option>
+              <option value="3 Kyu">3 Kyu</option>
+              <option value="2 Kyu">2 Kyu</option>
+              <option value="1 Kyu">1 Kyu</option>
+            </optgroup>
+            <optgroup label="Dan">
+              <option value="1 Dan">1 Dan</option>
+              <option value="2 Dan">2 Dan</option>
+              <option value="3 Dan">3 Dan</option>
+              <option value="4 Dan">4 Dan</option>
+              <option value="5 Dan">5 Dan</option>
+              <option value="6 Dan">6 Dan</option>
+              <option value="7 Dan">7 Dan</option>
+              <option value="8 Dan">8 Dan</option>
+              <option value="9 Dan">9 Dan</option>
+              <option value="10 Dan">10 Dan</option>
+            </optgroup>
+          </select>
+        </div>
+        
+        <div class="team-member">
+          <br>
+          <h4>Sportiv 3</h4>
+          <input type="text" name="teamMember3" placeholder="Nume Membru 3" required>
+          <input type="number" name="age3" placeholder="Vârstă" required>
+          <input type="number" name="kg3" placeholder="Greutate (kg)" required>
+          <select name="kyu3" required>
+            <optgroup label="Kyu">
+              <option value="10 Kyu">10 Kyu</option>
+              <option value="9 Kyu">9 Kyu</option>
+              <option value="8 Kyu">8 Kyu</option>
+              <option value="7 Kyu">7 Kyu</option>
+              <option value="6 Kyu">6 Kyu</option>
+              <option value="5 Kyu">5 Kyu</option>
+              <option value="4 Kyu">4 Kyu</option>
+              <option value="3 Kyu">3 Kyu</option>
+              <option value="2 Kyu">2 Kyu</option>
+              <option value="1 Kyu">1 Kyu</option>
+            </optgroup>
+            <optgroup label="Dan">
+              <option value="1 Dan">1 Dan</option>
+              <option value="2 Dan">2 Dan</option>
+              <option value="3 Dan">3 Dan</option>
+              <option value="4 Dan">4 Dan</option>
+              <option value="5 Dan">5 Dan</option>
+              <option value="6 Dan">6 Dan</option>
+              <option value="7 Dan">7 Dan</option>
+              <option value="8 Dan">8 Dan</option>
+              <option value="9 Dan">9 Dan</option>
+              <option value="10 Dan">10 Dan</option>
+            </optgroup>
+          </select>
+        </div>
+        <h3>Probe</h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="proba" value="kata echipe">Kata echipe</label>
+          <label><input type="checkbox" name="proba" value="kumite echipe">Kumite echipe</label>
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="submit-btn">Trimite</button>
+    </form>
+    <div id="popupModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <p id="popupText"></p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

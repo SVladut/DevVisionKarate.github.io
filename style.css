@@ -1,0 +1,266 @@
+/* Reset & fonturi */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Container cu efect glassmorphism */
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 153, 255, 0.4);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+/* Titluri */
+h2, h3, h4 {
+  color: #00aaff;
+  margin-bottom: 15px;
+}
+
+h4 {
+  text-align: left;
+}
+
+/* Select & etichete */
+.type-label {
+  display: block;
+  margin: 10px 0;
+  color: #fff;
+  font-weight: 500;
+}
+.custom-select {
+  width: 100%;
+  padding: 12px;
+  background-color: #222;
+  color: #fff;
+  border: 2px solid #00aaff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border 0.3s;
+}
+.custom-select:hover {
+  border-color: #0088cc;
+}
+
+/* Secțiuni formular */
+.form-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.form-section:hover {
+  transform: scale(1.01);
+}
+.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  height: 0;
+  overflow: hidden;
+}
+
+/* Input & select pentru formular */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #00aaff;
+  border-radius: 6px;
+  background-color: rgba(42, 42, 42, 0.8);
+  color: #fff;
+  transition: border-color 0.3s;
+}
+input:focus, select:focus {
+  border-color: #0088cc;
+  outline: none;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+.checkbox-group label {
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Buton */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #00aaff, #0088cc);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+.submit-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #0088cc, #0066aa);
+}
+
+/* Mesaj feedback */
+#message {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #00ff00;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+    max-width: 90%;
+  }
+  input, .custom-select, select {
+    padding: 10px;
+  }
+  .checkbox-group {
+    gap: 10px;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.checkbox-group label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #00aaff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 12px;
+  border: 1px solid #00aaff;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.3s;
+  min-width: 130px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.checkbox-group input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid #00aaff;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  background-color: #00aaff;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 14px;
+}
+
+.checkbox-group label:hover {
+  background: rgba(0, 136, 204, 0.2);
+  transform: scale(1.05);
+}
+
+input.club {
+  text-align: center;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  padding: 25px 30px;
+  border-radius: 16px;
+  color: #f0f0f0;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.2s ease, text-shadow 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff5c5c;
+  text-shadow: 0 0 8px rgba(255, 92, 92, 0.8);
+}
