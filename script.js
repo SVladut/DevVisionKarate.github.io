@@ -116,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       let res;
       if (type === "sportiv") {
-       res = await fetch('https://sitedbsportdatamicro.onrender.com/api/sportivi/adauga', {
+       //res = await fetch('https://sitedbsportdatamicro.onrender.com/api/sportivi/adauga', {
+        res = await fetch('http://localhost:8080/api/sportivi/adauga', {
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -152,3 +153,8 @@ showPopup(message);
     }
   });
 });
+
+const query = window.location.search;
+
+document.getElementById("plati-sportivi-btn").href = "plati_sportivi.html" + query;
+document.getElementById("plati-echipe-btn").href = "plati_echipe.html" + query;
