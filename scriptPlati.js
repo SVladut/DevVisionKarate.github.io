@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalSumaElement = document.getElementById("total-suma");
     let total = 0;
   
-    fetch(`http://localhost:8080/api/plati/sportivi?club=${encodeURIComponent(club)}`)
+    fetch(`https://sitedbsportdatamicro.onrender.com/api/plati/sportivi?club=${encodeURIComponent(club)}`)
       .then(response => {
         if (!response.ok) {
           throw new Error("Eroare la preluarea datelor");
