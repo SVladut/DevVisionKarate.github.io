@@ -29,7 +29,7 @@ body {
 
 /* Titluri */
 h2, h3, h4 {
-  color: #00aaff;
+  color: #53be0c;
   margin-bottom: 15px;
 }
 
@@ -49,13 +49,13 @@ h4 {
   padding: 12px;
   background-color: #222;
   color: #fff;
-  border: 2px solid #00aaff;
+  border: 2px solid #53be0c;
   border-radius: 6px;
   cursor: pointer;
   transition: border 0.3s;
 }
 .custom-select:hover {
-  border-color: #0088cc;
+  border-color: #6fff12;
 }
 
 /* Secțiuni formular */
@@ -81,14 +81,14 @@ input, select {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 2px solid #00aaff;
+  border: 2px solid #53be0c;
   border-radius: 6px;
   background-color: rgba(42, 42, 42, 0.8);
   color: #fff;
   transition: border-color 0.3s;
 }
 input:focus, select:focus {
-  border-color: #0088cc;
+  border-color: #6fff12;
   outline: none;
 }
 
@@ -110,7 +110,7 @@ input:focus, select:focus {
   width: 100%;
   padding: 12px;
   margin-top: 20px;
-  background: linear-gradient(135deg, #00aaff, #0088cc);
+  background: linear-gradient(135deg, #53be0c, #6fff12);
   border: none;
   color: #fff;
   font-size: 18px;
@@ -121,7 +121,7 @@ input:focus, select:focus {
 }
 .submit-btn:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #0088cc, #0066aa);
+  background: linear-gradient(135deg, #53be0c, #6fff12);
 }
 
 /* Mesaj feedback */
@@ -160,10 +160,10 @@ input:focus, select:focus {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  color: #00aaff;
+  color: #53be0c;
   background: rgba(0, 0, 0, 0.3);
   padding: 8px 12px;
-  border: 1px solid #00aaff;
+  border: 1px solid #53be0c;
   border-radius: 6px;
   transition: background 0.3s, transform 0.3s;
   min-width: 130px;
@@ -175,7 +175,7 @@ input:focus, select:focus {
   appearance: none;
   -webkit-appearance: none;
   background-color: transparent;
-  border: 2px solid #00aaff;
+  border: 2px solid #53be0c;
   width: 20px;
   height: 20px;
   border-radius: 4px;
@@ -187,7 +187,7 @@ input:focus, select:focus {
 }
 
 .checkbox-group input[type="checkbox"]:checked {
-  background-color: #00aaff;
+  background-color: #53be0c;
 }
 
 .checkbox-group input[type="checkbox"]:checked::after {
@@ -340,7 +340,7 @@ input.club {
 
     tfoot {
       background-color: #d0eaff;
-      border-top: 3px solid #3399ff;
+      border-top: 10px solid #6fff12;
     }
     
     tfoot td {
