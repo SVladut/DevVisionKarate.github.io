@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ÎNREGISTRARE CUPA MASAKI 2025</title>
+  <title>ÎNREGISTRARE VICTORY CUP 2025</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h2>ÎNREGISTRARE CUPA MASAKI 2025</h2>
+    <h2>ÎNREGISTRARE VICTORY CUP 2025</h2>
+    <img src="logoVictoria.png" alt="Logo Victoria" class="logo">
     <br>
+
     <div class="buttons-container">
       <a id="plati-sportivi-btn" class="plati-btn" href="#">Plati Sportivi</a>
       <a id="plati-echipe-btn" class="plati-btn" href="#">Plati Echipe</a>
     </div>
-    
+  
+
     
     <input type="text" class="club" id="club" placeholder="Club" readonly required>
     <br><br>
@@ -40,6 +43,7 @@
         
         <select id="kyu" required>
           <optgroup label="Kyu">
+          <option value="" disabled selected>Kyu</option>
             <option value="10 Kyu">10 Kyu</option>
             <option value="9 Kyu">9 Kyu</option>
             <option value="8 Kyu">8 Kyu</option>
@@ -68,7 +72,6 @@
         <h3>Probe</h3>
         <div class="checkbox-group">
           <label><input type="checkbox" name="proba" value="kata">Kata</label>
-          <label><input type="checkbox" name="proba" value="open kata">Open Kata</label>
           <label><input type="checkbox" name="proba" value="kumite">Kumite</label>
           <label><input type="checkbox" name="proba" value="makiwara">Makiwara</label>
           <label><input type="checkbox" name="proba" value="traseu">Traseu</label>
@@ -95,6 +98,7 @@
           <input type="number" name="kg1" placeholder="Greutate (kg)" required>
           <select name="kyu1" required>
             <optgroup label="Kyu">
+              <option value="" disabled selected>Kyu</option>
               <option value="10 Kyu">10 Kyu</option>
               <option value="9 Kyu">9 Kyu</option>
               <option value="8 Kyu">8 Kyu</option>
@@ -129,6 +133,7 @@
           <input type="number" name="kg2" placeholder="Greutate (kg)" required>
           <select name="kyu2" required>
             <optgroup label="Kyu">
+              <option value="" disabled selected>Kyu</option>
               <option value="10 Kyu">10 Kyu</option>
               <option value="9 Kyu">9 Kyu</option>
               <option value="8 Kyu">8 Kyu</option>
@@ -163,6 +168,7 @@
           <input type="number" name="kg3" placeholder="Greutate (kg)" required>
           <select name="kyu3" required>
             <optgroup label="Kyu">
+              <option value="" disabled selected>Kyu</option>
               <option value="10 Kyu">10 Kyu</option>
               <option value="9 Kyu">9 Kyu</option>
               <option value="8 Kyu">8 Kyu</option>

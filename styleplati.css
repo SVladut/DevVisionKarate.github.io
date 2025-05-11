@@ -354,4 +354,9 @@ input.club {
     tfoot td:first-child {
       text-align: left;
     }
-    
+
+.logo {
+  height: 20vh;
+margin-left: 13px;
+  filter: drop-shadow(0 4px 8px rgba(0, 153, 255, 0.4));
+}

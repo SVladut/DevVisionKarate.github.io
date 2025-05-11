@@ -116,15 +116,14 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       let res;
       if (type === "sportiv") {
- 
-        res = await fetch('https://sitedbsportdatamicro.onrender.com/api/sportivi/adauga', {
+      res = await fetch('https://sitedbsportdatamicro.onrender.com/api/sportivi/adauga', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
     }
     else{
-        res = await fetch('https://sitedbsportdatamicro.onrender.com/api/echipe/adauga', {
+    res = await fetch('https://sitedbsportdatamicro.onrender.com/api/echipe/adauga', {
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

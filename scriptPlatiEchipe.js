@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const totalSumaElement = document.getElementById("total-suma");
   let total = 0;
 
-  fetch(`https://sitedbsportdatamicro.onrender.com/api/plati/echipe?club=${encodeURIComponent(club)}`)
+   fetch(`https://sitedbsportdatamicro.onrender.com/api/plati/echipe?club=${encodeURIComponent(club)}`)
     .then(response => {
       if (!response.ok) {
         throw new Error("Eroare la preluarea datelor");
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <td>${index + 1}</td>
           <td>${plata.numeSportiv}</td>
           <td>${plata.suma} RON</td>
+          <td>${plata.categorii}</td>
         `;
 
         tbody.appendChild(tr);

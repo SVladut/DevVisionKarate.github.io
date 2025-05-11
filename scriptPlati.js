@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${index + 1}</td>
             <td>${plata.numeSportiv}</td>
             <td>${plata.suma} RON</td>
+            <td>${plata.categorii}</td>
           `;
   
           tbody.appendChild(tr);
