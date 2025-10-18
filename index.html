@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ÎNREGISTRARE VICTORY CUP 2025</title>
+  <title>ÎNREGISTRARE SASORI CUP</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h2>ÎNREGISTRARE VICTORY CUP 2025</h2>
-    <img src="logoVictoria.png" alt="Logo Victoria" class="logo">
+<h2 class="title-with-logos">
+  <img src="logo.png" alt="Logo stânga" class="logo-side">
+  ÎNREGISTRARE SASORI CUP
+  <img src="logo.png" alt="Logo dreapta" class="logo-side">
+</h2>
+
     <br>
-
     <div class="buttons-container">
-      <a id="plati-sportivi-btn" class="plati-btn" href="#">Plati Sportivi</a>
-      <a id="plati-echipe-btn" class="plati-btn" href="#">Plati Echipe</a>
+      <a id="plati-sportivi-btn" class="plati-btn">Plati Sportivi</a>
+      <a id="plati-echipe-btn" class="plati-btn">Plati Echipe</a>
     </div>
-  
-
+    
     
     <input type="text" class="club" id="club" placeholder="Club" readonly required>
     <br><br>
@@ -43,7 +45,6 @@
         
         <select id="kyu" required>
           <optgroup label="Kyu">
-          <option value="" disabled selected>Kyu</option>
             <option value="10 Kyu">10 Kyu</option>
             <option value="9 Kyu">9 Kyu</option>
             <option value="8 Kyu">8 Kyu</option>
@@ -68,13 +69,30 @@
             <option value="10 Dan">10 Dan</option>
           </optgroup>
         </select>
+        <br><br><br>
+        <h3>PROBE</h3>
+        <br><br><br>
+        <h3>SPORT</h3>
 
-        <h3>Probe</h3>
         <div class="checkbox-group">
-          <label><input type="checkbox" name="proba" value="kata">Kata</label>
-          <label><input type="checkbox" name="proba" value="kumite">Kumite</label>
-          <label><input type="checkbox" name="proba" value="makiwara">Makiwara</label>
-          <label><input type="checkbox" name="proba" value="traseu">Traseu</label>
+          <label><input type="checkbox" name="proba" value="traseu">TRASEU</label>
+          <label><input type="checkbox" name="proba" value="joc_tehnic">JOC TEHNIC</label>
+          <label><input type="checkbox" name="proba" value="kihon">KIHON</label>
+          <label><input type="checkbox" name="proba" value="kata">KATA</label>
+          <label><input type="checkbox" name="proba" value="jiyu_kumite">KUMITE</label>
+          <label><input type="checkbox" name="proba" value="kumite_open">KUMITE OPEN</label>
+        </div>
+<br><br><br>
+        <h3>TRADITIONAL FUDOKAN</h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="proba" value="kihon_t">KIHON</label>
+          <label><input type="checkbox" name="proba" value="kata_t">KATA</label>
+          <label><input type="checkbox" name="proba" value="kihon_kumite_t">KIHON IPPON KUMITE</label>
+          <label><input type="checkbox" name="proba" value="jiyu_kumite_t">IPPON KUMITE</label>
+          <label><input type="checkbox" name="proba" value="kogo_kumite_t">KOGO KUMITE</label>
+          <label><input type="checkbox" name="proba" value="jiyu_kumite_t">SHOBU IPPON KUMITE</label>
+          <label><input type="checkbox" name="proba" value="fuku_go_t">FUKU GO</label>
+                    
         </div>
       </div>
       
@@ -98,7 +116,6 @@
           <input type="number" name="kg1" placeholder="Greutate (kg)" required>
           <select name="kyu1" required>
             <optgroup label="Kyu">
-              <option value="" disabled selected>Kyu</option>
               <option value="10 Kyu">10 Kyu</option>
               <option value="9 Kyu">9 Kyu</option>
               <option value="8 Kyu">8 Kyu</option>
@@ -133,7 +150,6 @@
           <input type="number" name="kg2" placeholder="Greutate (kg)" required>
           <select name="kyu2" required>
             <optgroup label="Kyu">
-              <option value="" disabled selected>Kyu</option>
               <option value="10 Kyu">10 Kyu</option>
               <option value="9 Kyu">9 Kyu</option>
               <option value="8 Kyu">8 Kyu</option>
@@ -168,7 +184,6 @@
           <input type="number" name="kg3" placeholder="Greutate (kg)" required>
           <select name="kyu3" required>
             <optgroup label="Kyu">
-              <option value="" disabled selected>Kyu</option>
               <option value="10 Kyu">10 Kyu</option>
               <option value="9 Kyu">9 Kyu</option>
               <option value="8 Kyu">8 Kyu</option>
@@ -196,10 +211,10 @@
         </div>
         <h3>Probe</h3>
         <div class="checkbox-group">
-          <label><input type="checkbox" name="proba" value="kata echipe">Kata echipe</label>
+          <label><input type="checkbox" name="proba" value="kata echipe">KATA ECHIPE</label>
+          <label><input type="checkbox" name="proba" value="kata echipe">KATA ECHIPE TRADITIONAL</label>
         </div>
       </div>
-      <br>
       <button type="submit" class="submit-btn">Trimite</button>
     </form>
     <div id="popupModal" class="modal hidden">

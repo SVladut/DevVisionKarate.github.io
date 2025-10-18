@@ -6,8 +6,8 @@
 }
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #141e30, #243b55);
-  color: #fff;
+  background: linear-gradient(135deg, #0d0d0d, #2b2b2b);
+  color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,13 +15,14 @@ body {
   padding: 20px;
 }
 
+
 /* Container cu efect glassmorphism */
 .container {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 153, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
   width: 100%;
   max-width: 480px;
   text-align: center;
@@ -29,7 +30,7 @@ body {
 
 /* Titluri */
 h2, h3, h4 {
-  color: #00aaff;
+  color: #ccc;
   margin-bottom: 15px;
 }
 
@@ -41,21 +42,22 @@ h4 {
 .type-label {
   display: block;
   margin: 10px 0;
-  color: #fff;
+  color: #eee;
   font-weight: 500;
+  
 }
 .custom-select {
   width: 100%;
   padding: 12px;
-  background-color: #222;
-  color: #fff;
-  border: 2px solid #00aaff;
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+  border: 2px solid #555;
   border-radius: 6px;
   cursor: pointer;
   transition: border 0.3s;
 }
 .custom-select:hover {
-  border-color: #0088cc;
+  border-color: #888;
 }
 
 /* Secțiuni formular */
@@ -76,19 +78,19 @@ h4 {
   overflow: hidden;
 }
 
-/* Input & select pentru formular */
+/* Input & select */
 input, select {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 2px solid #00aaff;
+  border: 2px solid #666;
   border-radius: 6px;
-  background-color: rgba(42, 42, 42, 0.8);
-  color: #fff;
+  background-color: rgba(34, 34, 34, 0.8);
+  color: #f0f0f0;
   transition: border-color 0.3s;
 }
 input:focus, select:focus {
-  border-color: #0088cc;
+  border-color: #999;
   outline: none;
 }
 
@@ -101,16 +103,16 @@ input:focus, select:focus {
   flex-wrap: wrap;
 }
 .checkbox-group label {
-  color: #fff;
+  color: #ddd;
   cursor: pointer;
 }
 
-/* Buton */
+/* Buton principal */
 .submit-btn {
   width: 100%;
   padding: 12px;
   margin-top: 20px;
-  background: linear-gradient(135deg, #00aaff, #0088cc);
+  background: linear-gradient(135deg, #333, #555);
   border: none;
   color: #fff;
   font-size: 18px;
@@ -121,19 +123,19 @@ input:focus, select:focus {
 }
 .submit-btn:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #0088cc, #0066aa);
+  background: linear-gradient(135deg, #555, #777);
 }
 
 /* Mesaj feedback */
 #message {
   margin-top: 20px;
   font-weight: bold;
-  color: #00ff00;
+  color: #aaa;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 480px) {
   .container {
     padding: 20px;
@@ -147,47 +149,58 @@ input:focus, select:focus {
   }
 }
 
+/* Checkbox group redesign */
+/* Checkbox group - uniforme, unul pe rând (implicit), responsive la 2 coloane pe ecrane late */
 .checkbox-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+  grid-template-columns: 1fr; 
+  gap: 12px;
   margin-top: 15px;
-}
-
-.checkbox-group label {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  color: #00aaff;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 8px 12px;
-  border: 1px solid #00aaff;
-  border-radius: 6px;
-  transition: background 0.3s, transform 0.3s;
-  min-width: 130px;
-  text-align: center;
+  width: 100%;
+  align-items: stretch;
+  justify-items: stretch;
   box-sizing: border-box;
 }
 
+/* Label uniform: ocupa tot rândul, text centrat, padding consistent */
+.checkbox-group label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;               /* spațiu între checkbox și text */
+  cursor: pointer;
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 14px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  transition: background 0.18s, transform 0.12s;
+  width: 100%;
+  min-height: 48px;        /* aceeași înălțime pentru toate */
+  box-sizing: border-box;
+  justify-content: flex-start;
+   max-width: 300px; /* checkbox + text la stânga, dar tot rândul este ocupat */
+}
+
+/* Checkbox vizual: păstrăm checkbox custom, dar poziționăm corect */
 .checkbox-group input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-  background-color: transparent;
-  border: 2px solid #00aaff;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  margin-right: 8px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background: transparent;
+  display: inline-block;
   position: relative;
   cursor: pointer;
-  transition: background 0.3s;
   flex-shrink: 0;
+  transition: background 0.18s, border-color 0.18s;
 }
 
 .checkbox-group input[type="checkbox"]:checked {
-  background-color: #00aaff;
+  background-color: #aaa;
+  border-color: #aaa;
 }
 
 .checkbox-group input[type="checkbox"]:checked::after {
@@ -196,20 +209,37 @@ input:focus, select:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 14px;
+  color: #000;
+  font-size: 13px;
+  line-height: 1;
+  pointer-events: none;
 }
 
+/* hover/active pe label */
 .checkbox-group label:hover {
-  background: rgba(0, 136, 204, 0.2);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
+
+/* focus vizibil pentru accesibilitate (când input-ul are focus) */
+.checkbox-group input[type="checkbox"]:focus {
+  outline: 3px solid rgba(170,170,170,0.12);
+  outline-offset: 2px;
+}
+
+/* Pe ecrane mari afișăm 2 coloane (opțional) */
+@media (min-width: 920px) {
+  .checkbox-group {
+    grid-template-columns: 1fr 1fr; /* două coloane egale */
+  }
+}
+
 
 input.club {
   text-align: center;
 }
 
-
+/* Modal */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 .modal {
@@ -254,18 +284,18 @@ input.club {
   position: absolute;
   right: 15px;
   top: 10px;
-  color: #fff;
+  color: #ccc;
   font-size: 22px;
   cursor: pointer;
   transition: color 0.2s ease, text-shadow 0.3s ease;
 }
 
 .close-btn:hover {
-  color: #ff5c5c;
-  text-shadow: 0 0 8px rgba(255, 92, 92, 0.8);
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-
+/* Butoane secundare */
 .buttons-container {
   display: flex;
   justify-content: center;
@@ -274,7 +304,7 @@ input.club {
 }
 
 .plati-btn {
-  background-color: #4da6ff; /* albastru deschis */
+  background-color: #444;
   color: white;
   padding: 12px 20px;
   text-decoration: none;
@@ -282,18 +312,41 @@ input.club {
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .plati-btn:hover {
-  background-color: #3399ff;
+  background-color: #666;
   transform: scale(1.05);
 }
 
-.logo {
-  height: 20vh;
-margin-left: 13px;
-  filter: drop-shadow(0 4px 8px rgba(0, 153, 255, 0.4));
+.title-with-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f5;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+.title-with-logos .logo-side {
+  width: 15%;   
+  height: 15%px;
+  object-fit: contain;
+  background: none;     
+  padding: 0;           
+  border-radius: 0;     
+  /* Glow subtil alb-auriu, mai natural pe fundal întunecat */
+  filter: drop-shadow(0 0 4px rgba(255, 255, 220, 0.6))
+          drop-shadow(0 0 8px rgba(255, 255, 180, 0.5))
+          drop-shadow(0 0 12px rgba(255, 230, 120, 0.4));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
 
+.title-with-logos .logo-side:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 220, 0.8))
+          drop-shadow(0 0 12px rgba(255, 255, 180, 0.7))
+          drop-shadow(0 0 18px rgba(255, 230, 120, 0.6));
 }
