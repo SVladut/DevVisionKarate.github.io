@@ -158,10 +158,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let body = null;
 
       if (type === "sportiv") {
-        endpoint = 'http://localhost:8081/api/sportivi/adauga';
+        endpoint ='https://sitedbsportdatamicro.onrender.com';
+        //  endpoint = 'http://localhost:8081/api/sportivi/adauga';
         body = JSON.stringify(data);
       } else if (type === "echipa") {
-        endpoint = 'http://localhost:8081/api/echipe/adauga';
+        endpoint='https://sitedbsportdatamicro.onrender.com';
+       // endpoint = 'http://localhost:8081/api/echipe/adauga';
         body = JSON.stringify({
           club: data.club,
           probe: data.probe,
@@ -170,7 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } else if (type === "enbu") {
         // trimitem formatul care corespunde modelului EchipaENBU din backend
-        endpoint = 'http://localhost:8081/api/enbu/adauga';
+        //endpoint = 'http://localhost:8081/api/enbu/adauga';
+        endpoint = 'https://sitedbsportdatamicro.onrender.com/api/enbu/adauga';
         body = JSON.stringify({
           club: data.club,
           probe: data.probe.length ? data.probe : ["enbu"],
