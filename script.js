@@ -17,24 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
     popupModal.classList.remove("hidden");
   };
 
-  closeBtn.addEventListener("click", () => {
-    popupModal.classList.add("hidden");
-  });
+  closeBtn.addEventListener("click", () => popupModal.classList.add("hidden"));
   window.addEventListener("click", (event) => {
-    if (event.target === popupModal) {
-      popupModal.classList.add("hidden");
-    }
+    if (event.target === popupModal) popupModal.classList.add("hidden");
   });
 
   const clearSection = (section) => {
     if (!section) return;
+    // reset inputs (exclude club)
     section.querySelectorAll('input:not([type="checkbox"])').forEach(input => {
       if (input !== clubInput) input.value = '';
     });
+    // uncheck checkboxes
     section.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    section.querySelectorAll('select:not([id*="kyu"]):not([name*="kyu"])')
-           .forEach(select => select.selectedIndex = 0);
-    // în plus, resetează kyu selects
+    // reset selects (exclude kyu selects handled below)
+    section.querySelectorAll('select:not([id*="kyu"]):not([name*="kyu"])').forEach(select => select.selectedIndex = 0);
+    // reset kyu selects too
     section.querySelectorAll('select[name*="kyu"], select[id*="kyu"]').forEach(s => s.selectedIndex = 0);
   };
 
@@ -54,12 +52,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // MODIFICARE IMPORTANTĂ: nu seta 'required' pe checkbox-uri (name="proba")
   const setRequiredForSection = (section, required) => {
     if (!section) return;
-    // toate inputurile/selecturile din sectiune (except club)
     const controls = section.querySelectorAll('input, select, textarea');
     controls.forEach(ctrl => {
       if (ctrl === clubInput) return;
+      // skip checkboxes (probe)
+      if (ctrl.type === 'checkbox' || ctrl.name === 'proba') {
+        // întotdeauna îndepărtează required de pe probe
+        ctrl.removeAttribute('required');
+        return;
+      }
       if (required) ctrl.setAttribute('required', 'required');
       else ctrl.removeAttribute('required');
     });
@@ -72,14 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Init: arată secțiunea curentă
   showOnlySection(typeSelector.value);
+  typeSelector.addEventListener("change", (e) => showOnlySection(e.target.value));
 
-  typeSelector.addEventListener("change", (e) => {
-    showOnlySection(e.target.value);
-  });
+  // definiții probe pe grupe (pot rămâne - nu mai validează obligatoriu)
+  const SPORT_PROBES = new Set(["traseu","joc_tehnic","kihon","kata","kumite","kumite_open"]);
+  const TRAD_PROBES = new Set(["kihon_t","kata_t","kihon_kumite_t","jiyu_kumite_t","kogo_kumite_t","j_kumite_t","fuku_go_t"]);
+  const ENBU_PROBES = new Set(["enbu","enbu_open"]);
+
+  // helper: returneaza probele checkate doar din sectiunea activa
+  const getCheckedProbesFromActiveSection = (type) => {
+    let activeSection = sportivSection;
+    if (type === 'echipa') activeSection = echipaSection;
+    else if (type === 'enbu') activeSection = enbuSection;
+    if (!activeSection) return [];
+    return Array.from(activeSection.querySelectorAll('input[name="proba"]:checked'))
+                .map(el => el.value);
+  };
 
   const validateForm = (data) => {
     if (!data.club) return "Numele clubului este obligatoriu!";
-    if (!data.probe || !data.probe.length) return "Selectați cel puțin o probă!";
+
+    // --- Am scos validarea care cerea cel puțin o probă ---
+    // Verificări specifice pe tip:
     if (data.tip === "sportiv") {
       if (!data.nume || !data.varsta || !data.kg || !data.kyu || !data.gen) {
         return "Completați toate datele sportivului!";
@@ -116,8 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
 
     const type = typeSelector.value;
-    const probe = Array.from(document.querySelectorAll('input[name="proba"]:checked'))
-                       .map(el => el.value);
+    const probe = getCheckedProbesFromActiveSection(type);
     const data = { tip: type, club: clubInput.value.trim(), probe };
 
     if (type === "sportiv") {
@@ -159,11 +176,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (type === "sportiv") {
         endpoint ='https://sitedbsportdatamicro.onrender.com/api/sportivi/adauga';
-        //  endpoint = 'http://localhost:8081/api/sportivi/adauga';
         body = JSON.stringify(data);
       } else if (type === "echipa") {
         endpoint='https://sitedbsportdatamicro.onrender.com/api/echipe/adauga';
-       // endpoint = 'http://localhost:8081/api/echipe/adauga';
         body = JSON.stringify({
           club: data.club,
           probe: data.probe,
@@ -171,8 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
           membri: data.membri
         });
       } else if (type === "enbu") {
-        // trimitem formatul care corespunde modelului EchipaENBU din backend
-        //endpoint = 'http://localhost:8081/api/enbu/adauga';
         endpoint = 'https://sitedbsportdatamicro.onrender.com/api/enbu/adauga';
         body = JSON.stringify({
           club: data.club,
@@ -188,40 +201,29 @@ document.addEventListener("DOMContentLoaded", () => {
         body
       });
 
-      if (!res.ok) {
-        throw new Error(`Server error (${res.status})`);
-      }
+      if (!res.ok) throw new Error(`Server error (${res.status})`);
 
       const result = await res.json();
 
-      // construim mesaj generic, compatibil cu sportiv/echipa/enbu
       let namesText = '';
-      if (Array.isArray(result.nume)) {
-        namesText = result.nume.join(', ');
-      } else if (typeof result.nume === 'string') {
-        namesText = result.nume;
-      } else if (result.nume && typeof result.nume === 'object') {
-        namesText = JSON.stringify(result.nume);
-      }
+      if (Array.isArray(result.nume)) namesText = result.nume.join(', ');
+      else if (typeof result.nume === 'string') namesText = result.nume;
+      else if (result.nume && typeof result.nume === 'object') namesText = JSON.stringify(result.nume);
 
       const introduse = result.introduse && result.introduse.length ? result.introduse.join(', ') : 'nimic';
       const nereusite = result.nereusite && result.nereusite.length ? result.nereusite.join(', ') : null;
 
       let message = '';
-      if (type === 'sportiv') {
-        message = `Sportivul ${namesText || data.nume} a fost înscris la: ${introduse}.`;
-      } else if (type === 'echipa') {
-        message = `Echipa (membri: ${namesText}) a fost înscrisă la: ${introduse}.`;
-      } else { // enbu
-        message = `ENBU (membri: ${namesText}) a fost înscris la: ${introduse}.`;
-      }
+      if (type === 'sportiv') message = `Sportivul ${namesText || data.nume} a fost înscris la: ${introduse}.`;
+      else if (type === 'echipa') message = `Echipa (membri: ${namesText}) a fost înscrisă la: ${introduse}.`;
+      else message = `ENBU (membri: ${namesText}) a fost înscris la: ${introduse}.`;
 
       if (nereusite) message += `\nNu a fost înscris la: ${nereusite}.`;
 
       showPopup(message);
 
       form.reset();
-      showOnlySection(typeSelector.value); // reaplicăm vizibilitatea/required
+      showOnlySection(typeSelector.value);
     } catch (error) {
       console.error(error);
       showPopup("Server în mentenanță sau eroare la trimitere.");
