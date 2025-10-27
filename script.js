@@ -158,11 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let body = null;
 
       if (type === "sportiv") {
-        endpoint ='https://sitedbsportdatamicro.onrender.com';
+        endpoint ='https://sitedbsportdatamicro.onrender.com/api/sportivi/adauga';
         //  endpoint = 'http://localhost:8081/api/sportivi/adauga';
         body = JSON.stringify(data);
       } else if (type === "echipa") {
-        endpoint='https://sitedbsportdatamicro.onrender.com';
+        endpoint='https://sitedbsportdatamicro.onrender.com/api/echipe/adauga';
        // endpoint = 'http://localhost:8081/api/echipe/adauga';
         body = JSON.stringify({
           club: data.club,
