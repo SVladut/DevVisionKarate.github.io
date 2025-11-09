@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
           const tr = document.createElement("tr");
   
           tr.innerHTML = `
-            <td>${index + 1}</td>
             <td>${plata.numeSportiv}</td>
             <td>${plata.categorii || "-"}</td> <!-- ✅ Afișarea categoriilor -->
             <td>${plata.suma} RON</td>
