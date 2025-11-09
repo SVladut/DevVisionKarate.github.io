@@ -16,19 +16,26 @@
   <div class="container">
     <h2>Plăți Sasori Cup</h2>
 
+    <button id="exportExcel" class="back-btn" style="background-color:#2196F3; margin-right:10px;">
+  Export Excel
+</button>
+
+
     <table>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Nume</th>
-          <th>Suma</th>
-        </tr>
+            <th>#</th>
+            <th>Nume</th>
+            <th>Categorii</th>   <!-- ✅ aici -->
+            <th>Suma</th>
+          </tr>
       </thead>
       <tbody>
       </tbody>
       <tfoot>
         <tr>
           <td colspan="2">Total</td>
+            <td>&nbsp;</td>
           <td id="total-suma">0 RON</td>
         </tr>
       </tfoot>
@@ -38,6 +45,7 @@
   </div>
 
   <script src="scriptplati.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.min.js"></script>
+
 </body>
 </html>
