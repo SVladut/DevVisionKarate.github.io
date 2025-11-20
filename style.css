@@ -1,352 +1,294 @@
-/* Reset & fonturi */
+/* ===================== PALETĂ =====================
+   Roșu:       #e00000
+   Albastru:   #0046c7
+   Alb:        #ffffff
+   Fundal:     #0a0a0a
+===================================================== */
+
+/* ---------- RESET ---------- */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0d0d0d, #2b2b2b);
-  color: #f5f5f5;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #00132e);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+  width: 100%;
+  max-width: 550px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  padding: 35px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  box-shadow: 
+    0 0 20px rgba(0, 70, 199, 0.4),
+    0 0 35px rgba(224, 0, 0, 0.35);
+}
+
+/* ---------- TITLU + LOGO ---------- */
+.title-with-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.logo-side {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px #e00000) drop-shadow(0 0 8px #0046c7);
+  transition: 0.25s;
+}
+.logo-side:hover { transform: scale(1.15); }
+
+/* ---------- BUTOANE PLĂȚI ---------- */
+.buttons-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  gap: 18px;
+  margin-bottom: 20px;
 }
 
+.plati-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #e00000, #0046c7);
+  box-shadow: 0 0 10px rgba(224, 0, 0, 0.4);
+  transition: 0.25s;
+}
+.plati-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 18px rgba(0, 70, 199, 0.6);
+}
 
-/* Container cu efect glassmorphism */
-.container {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+/* ---------- INPUTURI / SELECTURI ---------- */
+input,
+select {
   width: 100%;
-  max-width: 480px;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: #0046c7;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Input club */
+input.club {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #e00000;
+  font-weight: 700;
   text-align: center;
 }
 
-/* Titluri */
-h2, h3, h4 {
-  color: #ccc;
-  margin-bottom: 15px;
-}
-
-h4 {
-  text-align: left;
-}
-
-/* Select & etichete */
-.type-label {
-  display: block;
-  margin: 10px 0;
-  color: #eee;
-  font-weight: 500;
-  
-}
-.custom-select {
-  width: 100%;
-  padding: 12px;
-  background-color: #1a1a1a;
-  color: #f5f5f5;
-  border: 2px solid #555;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: border 0.3s;
-}
-.custom-select:hover {
-  border-color: #888;
-}
-
-/* Secțiuni formular */
+/* ---------- SECȚIUNI FORMULAR ---------- */
 .form-section {
-  margin-top: 20px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 0.25s;
 }
 .form-section:hover {
   transform: scale(1.01);
-}
-.hidden {
-  opacity: 0;
-  transform: translateY(10px);
-  height: 0;
-  overflow: hidden;
+  border-color: #0046c7;
 }
 
-/* Input & select */
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 2px solid #666;
-  border-radius: 6px;
-  background-color: rgba(34, 34, 34, 0.8);
-  color: #f0f0f0;
-  transition: border-color 0.3s;
-}
-input:focus, select:focus {
-  border-color: #999;
-  outline: none;
-}
+.hidden { display: none; }
 
-/* Checkbox */
+/* ---------- CHECKBOX — REFACTORED, CENTRAT ---------- */
+/* ---------- CHECKBOX CUSTOM — TEXT CENTRAT ---------- */
 .checkbox-group {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
-.checkbox-group label {
-  color: #ddd;
-  cursor: pointer;
-}
-
-/* Buton principal */
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background: linear-gradient(135deg, #333, #555);
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
-}
-.submit-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #555, #777);
-}
-
-/* Mesaj feedback */
-#message {
-  margin-top: 20px;
-  font-weight: bold;
-  color: #aaa;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-  .container {
-    padding: 20px;
-    max-width: 90%;
-  }
-  input, .custom-select, select {
-    padding: 10px;
-  }
-  .checkbox-group {
-    gap: 10px;
-  }
-}
-
-/* Checkbox group redesign */
-/* Checkbox group - uniforme, unul pe rând (implicit), responsive la 2 coloane pe ecrane late */
-.checkbox-group {
-  grid-template-columns: 1fr; 
+  display: grid;
   gap: 12px;
   margin-top: 15px;
-  width: 100%;
-  align-items: stretch;
-  justify-items: stretch;
-  box-sizing: border-box;
 }
 
-/* Label uniform: ocupa tot rândul, text centrat, padding consistent */
 .checkbox-group label {
-  position: relative;
   display: flex;
-  align-items: center;
-  gap: 12px;               /* spațiu între checkbox și text */
+  align-items: self-end;   /* CENTRARE VERTICALĂ */
+  gap: 12px;
+  padding: 12px 14px ;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  color: #ccc;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 10px 14px;
-  border: 1px solid #666;
-  border-radius: 8px;
-  transition: background 0.18s, transform 0.12s;
-  width: 100%;
-  min-height: 48px;        /* aceeași înălțime pentru toate */
-  box-sizing: border-box;
-  justify-content: flex-start;
-   max-width: 300px; /* checkbox + text la stânga, dar tot rândul este ocupat */
+  font-weight: 900;
+  transition: 0.2s;
 }
 
-/* Checkbox vizual: păstrăm checkbox custom, dar poziționăm corect */
+.checkbox-group label:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #0046c7;
+}
+
+/* Checkbox ascuns */
 .checkbox-group input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 22px;
   height: 22px;
-  min-width: 22px;
-  border: 2px solid #888;
   border-radius: 6px;
-  background: transparent;
-  display: inline-block;
-  position: relative;
+  border: 2px solid #ffffffaa;
+  background: rgba(0, 0, 0, 0.25);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.18s, border-color 0.18s;
+  position: relative;
+  transition: 0.25s;
 }
 
-.checkbox-group input[type="checkbox"]:checked {
-  background-color: #aaa;
-  border-color: #aaa;
-}
-
+/* Bifa — folosim ::after pentru ✔ */
 .checkbox-group input[type="checkbox"]:checked::after {
   content: "✓";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #000;
-  font-size: 13px;
-  line-height: 1;
-  pointer-events: none;
+  color: #0046c7;
+  font-size: 14px;
+  font-weight: 900;
 }
 
-/* hover/active pe label */
-.checkbox-group label:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
+/* Când e bifat — schimbă doar fundal și contur */
+.checkbox-group input[type="checkbox"]:checked {
+  background-color: #ffffff;
+  border-color: #0046c7;
 }
 
-/* focus vizibil pentru accesibilitate (când input-ul are focus) */
-.checkbox-group input[type="checkbox"]:focus {
-  outline: 3px solid rgba(170,170,170,0.12);
-  outline-offset: 2px;
-}
-
-/* Pe ecrane mari afișăm 2 coloane (opțional) */
-@media (min-width: 920px) {
-  .checkbox-group {
-    grid-template-columns: 1fr 1fr; /* două coloane egale */
-  }
-}
-
-
-input.club {
-  text-align: center;
-}
-
-/* Modal */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
+/* ---------- BUTON TRIMITE ---------- */
+.submit-btn {
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  font-family: 'Inter', sans-serif;
-  transition: opacity 0.3s ease-in-out;
+  padding: 14px;
+  margin-top: 25px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #0046c7, #e00000);
+  color: #ffffff;
+  transition: 0.25s;
+  box-shadow: 0 0 12px rgba(0, 70, 199, 0.5);
 }
 
-.modal.hidden {
-  display: none;
+.submit-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px rgba(224, 0, 0, 0.6);
 }
+
+/* ---------- MODAL ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal.hidden { display: none; }
 
 .modal-content {
-  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
   padding: 25px 30px;
-  border-radius: 16px;
-  color: #f0f0f0;
-  max-width: 420px;
-  width: 90%;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #001736, #002c66);
+  color: white;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0 25px rgba(0, 70, 199, 0.6),
+    0 0 20px rgba(224, 0, 0, 0.45);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pop 0.3s ease;
 }
 
-.modal-content:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
 .close-btn {
   position: absolute;
-  right: 15px;
+  right: 12px;
   top: 10px;
-  color: #ccc;
-  font-size: 22px;
-  cursor: pointer;
-  transition: color 0.2s ease, text-shadow 0.3s ease;
-}
-
-.close-btn:hover {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-}
-
-/* Butoane secundare */
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.plati-btn {
-  background-color: #444;
-  color: white;
-  padding: 12px 20px;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.plati-btn:hover {
-  background-color: #666;
-  transform: scale(1.05);
-}
-
-.title-with-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f5f5f5;
   font-size: 26px;
-  font-weight: bold;
-  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
 }
-.title-with-logos .logo-side {
-  width: 15%;   
-  height: 15%px;
-  object-fit: contain;
-  background: none;     
-  padding: 0;           
-  border-radius: 0;     
-  /* Glow subtil alb-auriu, mai natural pe fundal întunecat */
-  filter: drop-shadow(0 0 4px rgba(255, 255, 220, 0.6))
-          drop-shadow(0 0 8px rgba(255, 255, 180, 0.5))
-          drop-shadow(0 0 12px rgba(255, 230, 120, 0.4));
-  transition: transform 0.2s ease, filter 0.2s ease;
+.close-btn:hover {
+  color: #e00000;
+  transform: scale(1.15);
 }
 
-.title-with-logos .logo-side:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 6px rgba(255, 255, 220, 0.8))
-          drop-shadow(0 0 12px rgba(255, 255, 180, 0.7))
-          drop-shadow(0 0 18px rgba(255, 230, 120, 0.6));
+/* ---------- SELECTOR SPORTIV/ECHIPĂ ---------- */
+.type-selector {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 12px rgba(0, 70, 199, 0.35);
+  transition: 0.25s;
+}
+
+.type-selector:hover {
+  transform: scale(1.02);
+  border-color: #0046c7;
+}
+
+.type-selector h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ---------- DROPDOWN (Select) ---------- */
+select.custom-select {
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+select.custom-select option {
+  background: #001736;
+  color: #ffffff;
+  padding: 12px;
+}
+
+select.custom-select:focus option {
+  background: #001736 !important;
+  color: #ffffff !important;
+}
+
+select.custom-select:hover {
+  border-color: #0046c7;
 }
