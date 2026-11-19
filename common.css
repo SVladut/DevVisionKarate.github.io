@@ -87,6 +87,9 @@ legend { padding: 0; }
 .site-footer { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: var(--space-3); padding-block: var(--space-6); border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 .footer-credit { text-align: center; text-wrap: balance; }
 .site-footer .footer-name { color: var(--ink); font-weight: 600; }
+.footer-company { display: inline-block; border-radius: 4px; }
+.site-footer .footer-company:hover { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 4px; }
+.site-footer .footer-company:active { color: var(--accent-ink); transform: scale(.98); }
 .page-enter { animation: page-enter 400ms ease both; }
 @keyframes page-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @media (min-width: 640px) {
