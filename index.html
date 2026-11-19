@@ -1,219 +1,284 @@
 <!DOCTYPE html>
 <html lang="ro">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ÎNREGISTRARE VICTORY CUP</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h2 class="title-with-logos">
-      <img src="logo.png" alt="Logo stânga" class="logo-side">
-      ÎNREGISTRARE VICTORY CUP
-      <img src="logo.png" alt="Logo dreapta" class="logo-side">
-    </h2>
-
-    <br>
-    <div class="buttons-container">
-      <a id="plati-sportivi-btn" class="plati-btn">Plati Sportivi</a>
-      <a id="plati-echipe-btn" class="plati-btn">Plati Echipe</a>
-    </div>
-
-    <input type="text" class="club" id="club" placeholder="Club" readonly required>
-    <br><br>
- <div class="type-selector">
-  <h3>Tip înscriere</h3>
-  <select id="type" class="custom-select">
-    <option value="sportiv">Sportiv</option>
-    <option value="echipa">Echipă</option>
-  </select>
-</div>
-
-
-    <form id="karateForm">
-      <!-- Formular pentru sportiv -->
-      <div id="sportivFields" class="form-section">
-        <h3>Sportiv</h3>
-        <select id="genderSportiv" required  class="custom-select">
-          <option value="" disabled selected>Gen</option>
-          <option value="Masculin">Masculin</option>
-          <option value="Feminin">Feminin</option>
-        </select>
-
-        <input type="text" id="name" placeholder="Nume" required>
-        <input type="number" id="age" placeholder="Vârstă" required>
-        <input type="number" id="kg" placeholder="Greutate (kg)" required>
-
-        <select id="kyu" required>
-          <optgroup label="Kyu">
-            <option value="10 Kyu">10 Kyu</option>
-            <option value="9 Kyu">9 Kyu</option>
-            <option value="8 Kyu">8 Kyu</option>
-            <option value="7 Kyu">7 Kyu</option>
-            <option value="6 Kyu">6 Kyu</option>
-            <option value="5 Kyu">5 Kyu</option>
-            <option value="4 Kyu">4 Kyu</option>
-            <option value="3 Kyu">3 Kyu</option>
-            <option value="2 Kyu">2 Kyu</option>
-            <option value="1 Kyu">1 Kyu</option>
-          </optgroup>
-          <optgroup label="Dan">
-            <option value="1 Dan">1 Dan</option>
-            <option value="2 Dan">2 Dan</option>
-            <option value="3 Dan">3 Dan</option>
-            <option value="4 Dan">4 Dan</option>
-            <option value="5 Dan">5 Dan</option>
-            <option value="6 Dan">6 Dan</option>
-            <option value="7 Dan">7 Dan</option>
-            <option value="8 Dan">8 Dan</option>
-            <option value="9 Dan">9 Dan</option>
-            <option value="10 Dan">10 Dan</option>
-          </optgroup>
-        </select>
-        <br><br><br>
-        <h3>PROBE</h3>
-        <br>
-
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="proba" value="traseu">TRASEU</label>
-          <label><input type="checkbox" name="proba" value="joc_tehnic">MAKIWARA</label>
-          <label><input type="checkbox" name="proba" value="kata">KATA</label>
-          <label><input type="checkbox" name="proba" value="kumite">KUMITE</label>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Înscrieri · Victory Cup</title>
+    <script src="ui.js"></script>
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body><a class="skip-link" href="#main-content">Sari la conținut</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="index.html" data-context-link="index.html" aria-label="Victory Cup — înscrieri">
+          <img src="logo.png" alt="" width="36" height="36" class="brand-logo">
+          <span><span class="brand-name">Victory Cup<span aria-hidden="true">.</span></span><span class="brand-description">Portalul cluburilor</span></span>
+        </a>
+        <div class="header-actions"><span class="header-caption">Karate. Disciplină. Respect.</span>
+          <button type="button" class="icon-button" data-theme-toggle aria-label="Schimbă tema" aria-pressed="false"><svg class="theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.9 13.1A9 9 0 0 1 10.9 3.1 9 9 0 1 0 20.9 13.1Z"/></svg><svg class="theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4m0-14.2-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg></button>
         </div>
-</div>
-
-      <!-- Formular pentru echipa (3 membri) -->
-      <div id="echipaFields" class="form-section hidden">
-        <h3>Echipă</h3>
-
-        <select id="genderEchipa"  class="custom-select">
-          <option value="" disabled selected>Gen echipă</option>
-          <option value="Masculin">Masculin</option>
-          <option value="Feminin">Feminin</option>
-        </select>
-
-        <div class="team-member">
-          <br>
-          <h4>Sportiv 1</h4>
-          <input type="text" name="teamMember1" placeholder="Nume Membru 1">
-          <input type="number" name="age1" placeholder="Vârstă">
-          <input type="number" name="kg1" placeholder="Greutate (kg)">
-          <select name="kyu1">
-            <optgroup label="Kyu">
-              <option value="10 Kyu">10 Kyu</option>
-              <option value="9 Kyu">9 Kyu</option>
-              <option value="8 Kyu">8 Kyu</option>
-              <option value="7 Kyu">7 Kyu</option>
-              <option value="6 Kyu">6 Kyu</option>
-              <option value="5 Kyu">5 Kyu</option>
-              <option value="4 Kyu">4 Kyu</option>
-              <option value="3 Kyu">3 Kyu</option>
-              <option value="2 Kyu">2 Kyu</option>
-              <option value="1 Kyu">1 Kyu</option>
-            </optgroup>
-            <optgroup label="Dan">
-              <option value="1 Dan">1 Dan</option>
-              <option value="2 Dan">2 Dan</option>
-              <option value="3 Dan">3 Dan</option>
-              <option value="4 Dan">4 Dan</option>
-              <option value="5 Dan">5 Dan</option>
-              <option value="6 Dan">6 Dan</option>
-              <option value="7 Dan">7 Dan</option>
-              <option value="8 Dan">8 Dan</option>
-              <option value="9 Dan">9 Dan</option>
-              <option value="10 Dan">10 Dan</option>
-            </optgroup>
-          </select>
-        </div>
-
-        <div class="team-member">
-          <br>
-          <h4>Sportiv 2</h4>
-          <input type="text" name="teamMember2" placeholder="Nume Membru 2">
-          <input type="number" name="age2" placeholder="Vârstă">
-          <input type="number" name="kg2" placeholder="Greutate (kg)">
-          <select name="kyu2">
-            <optgroup label="Kyu">
-              <option value="10 Kyu">10 Kyu</option>
-              <option value="9 Kyu">9 Kyu</option>
-              <option value="8 Kyu">8 Kyu</option>
-              <option value="7 Kyu">7 Kyu</option>
-              <option value="6 Kyu">6 Kyu</option>
-              <option value="5 Kyu">5 Kyu</option>
-              <option value="4 Kyu">4 Kyu</option>
-              <option value="3 Kyu">3 Kyu</option>
-              <option value="2 Kyu">2 Kyu</option>
-              <option value="1 Kyu">1 Kyu</option>
-            </optgroup>
-            <optgroup label="Dan">
-              <option value="1 Dan">1 Dan</option>
-              <option value="2 Dan">2 Dan</option>
-              <option value="3 Dan">3 Dan</option>
-              <option value="4 Dan">4 Dan</option>
-              <option value="5 Dan">5 Dan</option>
-              <option value="6 Dan">6 Dan</option>
-              <option value="7 Dan">7 Dan</option>
-              <option value="8 Dan">8 Dan</option>
-              <option value="9 Dan">9 Dan</option>
-              <option value="10 Dan">10 Dan</option>
-            </optgroup>
-          </select>
-        </div>
-
-        <div class="team-member">
-          <br>
-          <h4>Sportiv 3</h4>
-          <input type="text" name="teamMember3" placeholder="Nume Membru 3">
-          <input type="number" name="age3" placeholder="Vârstă">
-          <input type="number" name="kg3" placeholder="Greutate (kg)">
-          <select name="kyu3">
-            <optgroup label="Kyu">
-              <option value="10 Kyu">10 Kyu</option>
-              <option value="9 Kyu">9 Kyu</option>
-              <option value="8 Kyu">8 Kyu</option>
-              <option value="7 Kyu">7 Kyu</option>
-              <option value="6 Kyu">6 Kyu</option>
-              <option value="5 Kyu">5 Kyu</option>
-              <option value="4 Kyu">4 Kyu</option>
-              <option value="3 Kyu">3 Kyu</option>
-              <option value="2 Kyu">2 Kyu</option>
-              <option value="1 Kyu">1 Kyu</option>
-            </optgroup>
-            <optgroup label="Dan">
-              <option value="1 Dan">1 Dan</option>
-              <option value="2 Dan">2 Dan</option>
-              <option value="3 Dan">3 Dan</option>
-              <option value="4 Dan">4 Dan</option>
-              <option value="5 Dan">5 Dan</option>
-              <option value="6 Dan">6 Dan</option>
-              <option value="7 Dan">7 Dan</option>
-              <option value="8 Dan">8 Dan</option>
-              <option value="9 Dan">9 Dan</option>
-              <option value="10 Dan">10 Dan</option>
-            </optgroup>
-          </select>
-        </div>
-        <h3>Probe</h3>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="proba" value="kata echipe">KATA ECHIPE</label>
-        </div>
+        <nav class="main-nav" aria-label="Navigare principală"><a  class="nav-link" href="index.html" data-context-link="index.html" aria-current=page>Înscrieri</a><a id=plati-sportivi-btn class="nav-link" href="plati_sportivi.html" data-context-link="plati_sportivi.html" >Plăți sportivi</a><a id=plati-echipe-btn class="nav-link" href="plati_echipe.html" data-context-link="plati_echipe.html" >Plăți echipe</a></nav>
       </div>
-
-     
-
-      <button type="submit" class="submit-btn">Trimite</button>
-    </form>
-
-    <div id="popupModal" class="modal hidden">
+    </header>
+    <main id="main-content" class="shell registration-layout page-enter">
+      <aside class="intro" aria-labelledby="page-title">
+        <div class="intro-rule" aria-hidden="true"></div>
+        <p class="eyebrow accent-eyebrow">Înscrieri la competiție</p>
+        <h1 id="page-title" class="page-title">Următoarea victorie începe aici.</h1>
+        <p class="page-description">Înscrie sportivii și echipele clubului tău la probele competiției.</p>
+        <div class="club-context">
+          <label for="club">Clubul tău</label>
+          <input type="text" class="club" id="club" placeholder="Club nespecificat" readonly required></div>
+        <div class="intro-note">
+          <h2>Înainte să începi</h2>
+          <p>Pregătește numele, vârsta, greutatea și gradul fiecărui sportiv. Categoria de concurs se calculează automat.</p>
+        </div>
+      </aside>
+      <div class="registration-panel container">
+        <div class="panel-header">
+          <h2>Înscriere nouă</h2>
+          <p>Completează datele, apoi selectează probele.</p>
+          <div class="type-selector">
+            <label for="type">Tip înscriere</label>
+            <select id="type" class="custom-select"><option value="sportiv">Sportiv individual</option><option value="echipa">Echipă · 3 sportivi</option></select>
+          </div>
+        </div>
+        <form id="karateForm">
+          <section id="sportivFields" class="form-section" aria-labelledby="sportiv-title">
+            <div class="section-heading">
+              <h3 id="sportiv-title">Datele sportivului</h3>
+              <span>* Câmp obligatoriu</span></div>
+            <div class="fields-grid">
+              <div class="field field-wide">
+                <label for="name">Nume complet <span class="required-marker" aria-hidden="true">*</span></label>
+                <input type="text" id="name"  required placeholder="Numele și prenumele sportivului" aria-describedby="name-error"><span class="field-error" id="name-error" hidden></span></div>
+              <div class="field">
+                <label for="genderSportiv">Gen <span class="required-marker" aria-hidden="true">*</span></label>
+                <select id="genderSportiv" class="custom-select" required aria-describedby="genderSportiv-error"><option value="" disabled selected>Selectează genul</option><option value="Masculin">Masculin</option><option value="Feminin">Feminin</option></select>
+                <span class="field-error" id="genderSportiv-error" hidden></span></div>
+              <div class="field">
+                <label for="kyu">Grad <span class="required-marker" aria-hidden="true">*</span></label>
+                <select id="kyu"  required aria-describedby="kyu-error">
+                  <optgroup label="Kyu">
+                    <option value="10 Kyu">10 Kyu</option>
+                    <option value="9 Kyu">9 Kyu</option>
+                    <option value="8 Kyu">8 Kyu</option>
+                    <option value="7 Kyu">7 Kyu</option>
+                    <option value="6 Kyu">6 Kyu</option>
+                    <option value="5 Kyu">5 Kyu</option>
+                    <option value="4 Kyu">4 Kyu</option>
+                    <option value="3 Kyu">3 Kyu</option>
+                    <option value="2 Kyu">2 Kyu</option>
+                    <option value="1 Kyu">1 Kyu</option>
+                  </optgroup>
+                  <optgroup label="Dan">
+                    <option value="1 Dan">1 Dan</option>
+                    <option value="2 Dan">2 Dan</option>
+                    <option value="3 Dan">3 Dan</option>
+                    <option value="4 Dan">4 Dan</option>
+                    <option value="5 Dan">5 Dan</option>
+                    <option value="6 Dan">6 Dan</option>
+                    <option value="7 Dan">7 Dan</option>
+                    <option value="8 Dan">8 Dan</option>
+                    <option value="9 Dan">9 Dan</option>
+                    <option value="10 Dan">10 Dan</option>
+                  </optgroup>
+                </select>
+                <span class="field-error" id="kyu-error" hidden></span></div>
+              <div class="field">
+                <label for="age">Vârstă (ani) <span class="required-marker" aria-hidden="true">*</span></label>
+                <input type="number" id="age"  required placeholder="Ani" aria-describedby="age-error"><span class="field-error" id="age-error" hidden></span></div>
+              <div class="field">
+                <label for="kg">Greutate (kg) <span class="required-marker" aria-hidden="true">*</span></label>
+                <input type="number" id="kg"  required placeholder="Kg" aria-describedby="kg-error"><span class="field-error" id="kg-error" hidden></span></div>
+            </div>
+            <fieldset class="events"><legend>Probe de concurs</legend>
+              <p class="events-description">Alege probele la care dorești înscrierea.</p>
+              <div class="checkbox-group">
+                <label>
+                  <input type="checkbox" name="proba" value="traseu"><span>Traseu tehnic</span></label>
+                <label>
+                  <input type="checkbox" name="proba" value="joc_tehnic"><span>Makiwara</span></label>
+                <label>
+                  <input type="checkbox" name="proba" value="kata"><span>Kata individual</span></label>
+                <label>
+                  <input type="checkbox" name="proba" value="kata_open"><span>Kata open</span></label>
+                <label>
+                  <input type="checkbox" name="proba" value="kumite"><span>Kumite individual</span></label>
+                <label>
+                  <input type="checkbox" name="proba" value="kumite_open"><span>Kumite open</span></label>
+              </div>
+              <div id="sportivCategories" class="category-preview" aria-live="polite"></div>
+            </fieldset>
+          </section>
+          <section id="echipaFields" class="form-section hidden" aria-labelledby="echipa-title">
+            <div class="section-heading">
+              <h3 id="echipa-title">Componența echipei</h3>
+              <span>* Câmp obligatoriu</span></div>
+            <div class="fields-grid">
+              <div class="field">
+                <label for="genderEchipa">Gen echipă <span class="required-marker" aria-hidden="true">*</span></label>
+                <select id="genderEchipa" class="custom-select"  aria-describedby="genderEchipa-error"><option value="" disabled selected>Selectează genul</option><option value="Masculin">Masculin</option><option value="Feminin">Feminin</option></select>
+                <span class="field-error" id="genderEchipa-error" hidden></span></div>
+            </div>
+            <section class="team-member" aria-labelledby="member-title-1">
+              <h4 id="member-title-1">Sportiv 1</h4>
+              <div class="fields-grid">
+                <div class="field field-wide">
+                  <label for="teamMember1">Nume complet <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="text" id="teamMember1" name=teamMember1  placeholder="Numele și prenumele" aria-describedby="teamMember1-error"><span class="field-error" id="teamMember1-error" hidden></span></div>
+                <div class="field">
+                  <label for="age1">Vârstă (ani) <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="number" id="age1" name=age1  placeholder="Ani" aria-describedby="age1-error"><span class="field-error" id="age1-error" hidden></span></div>
+                <div class="field">
+                  <label for="kg1">Greutate (kg) <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="number" id="kg1" name=kg1  placeholder="Kg" aria-describedby="kg1-error"><span class="field-error" id="kg1-error" hidden></span></div>
+                <div class="field">
+                  <label for="kyu1">Grad <span class="required-marker" aria-hidden="true">*</span></label>
+                  <select id="kyu1" name=kyu1  aria-describedby="kyu1-error">
+                    <optgroup label="Kyu">
+                      <option value="10 Kyu">10 Kyu</option>
+                      <option value="9 Kyu">9 Kyu</option>
+                      <option value="8 Kyu">8 Kyu</option>
+                      <option value="7 Kyu">7 Kyu</option>
+                      <option value="6 Kyu">6 Kyu</option>
+                      <option value="5 Kyu">5 Kyu</option>
+                      <option value="4 Kyu">4 Kyu</option>
+                      <option value="3 Kyu">3 Kyu</option>
+                      <option value="2 Kyu">2 Kyu</option>
+                      <option value="1 Kyu">1 Kyu</option>
+                    </optgroup>
+                    <optgroup label="Dan">
+                      <option value="1 Dan">1 Dan</option>
+                      <option value="2 Dan">2 Dan</option>
+                      <option value="3 Dan">3 Dan</option>
+                      <option value="4 Dan">4 Dan</option>
+                      <option value="5 Dan">5 Dan</option>
+                      <option value="6 Dan">6 Dan</option>
+                      <option value="7 Dan">7 Dan</option>
+                      <option value="8 Dan">8 Dan</option>
+                      <option value="9 Dan">9 Dan</option>
+                      <option value="10 Dan">10 Dan</option>
+                    </optgroup>
+                  </select>
+                  <span class="field-error" id="kyu1-error" hidden></span></div>
+              </div>
+            </section>
+            <section class="team-member" aria-labelledby="member-title-2">
+              <h4 id="member-title-2">Sportiv 2</h4>
+              <div class="fields-grid">
+                <div class="field field-wide">
+                  <label for="teamMember2">Nume complet <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="text" id="teamMember2" name=teamMember2  placeholder="Numele și prenumele" aria-describedby="teamMember2-error"><span class="field-error" id="teamMember2-error" hidden></span></div>
+                <div class="field">
+                  <label for="age2">Vârstă (ani) <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="number" id="age2" name=age2  placeholder="Ani" aria-describedby="age2-error"><span class="field-error" id="age2-error" hidden></span></div>
+                <div class="field">
+                  <label for="kg2">Greutate (kg) <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="number" id="kg2" name=kg2  placeholder="Kg" aria-describedby="kg2-error"><span class="field-error" id="kg2-error" hidden></span></div>
+                <div class="field">
+                  <label for="kyu2">Grad <span class="required-marker" aria-hidden="true">*</span></label>
+                  <select id="kyu2" name=kyu2  aria-describedby="kyu2-error">
+                    <optgroup label="Kyu">
+                      <option value="10 Kyu">10 Kyu</option>
+                      <option value="9 Kyu">9 Kyu</option>
+                      <option value="8 Kyu">8 Kyu</option>
+                      <option value="7 Kyu">7 Kyu</option>
+                      <option value="6 Kyu">6 Kyu</option>
+                      <option value="5 Kyu">5 Kyu</option>
+                      <option value="4 Kyu">4 Kyu</option>
+                      <option value="3 Kyu">3 Kyu</option>
+                      <option value="2 Kyu">2 Kyu</option>
+                      <option value="1 Kyu">1 Kyu</option>
+                    </optgroup>
+                    <optgroup label="Dan">
+                      <option value="1 Dan">1 Dan</option>
+                      <option value="2 Dan">2 Dan</option>
+                      <option value="3 Dan">3 Dan</option>
+                      <option value="4 Dan">4 Dan</option>
+                      <option value="5 Dan">5 Dan</option>
+                      <option value="6 Dan">6 Dan</option>
+                      <option value="7 Dan">7 Dan</option>
+                      <option value="8 Dan">8 Dan</option>
+                      <option value="9 Dan">9 Dan</option>
+                      <option value="10 Dan">10 Dan</option>
+                    </optgroup>
+                  </select>
+                  <span class="field-error" id="kyu2-error" hidden></span></div>
+              </div>
+            </section>
+            <section class="team-member" aria-labelledby="member-title-3">
+              <h4 id="member-title-3">Sportiv 3</h4>
+              <div class="fields-grid">
+                <div class="field field-wide">
+                  <label for="teamMember3">Nume complet <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="text" id="teamMember3" name=teamMember3  placeholder="Numele și prenumele" aria-describedby="teamMember3-error"><span class="field-error" id="teamMember3-error" hidden></span></div>
+                <div class="field">
+                  <label for="age3">Vârstă (ani) <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="number" id="age3" name=age3  placeholder="Ani" aria-describedby="age3-error"><span class="field-error" id="age3-error" hidden></span></div>
+                <div class="field">
+                  <label for="kg3">Greutate (kg) <span class="required-marker" aria-hidden="true">*</span></label>
+                  <input type="number" id="kg3" name=kg3  placeholder="Kg" aria-describedby="kg3-error"><span class="field-error" id="kg3-error" hidden></span></div>
+                <div class="field">
+                  <label for="kyu3">Grad <span class="required-marker" aria-hidden="true">*</span></label>
+                  <select id="kyu3" name=kyu3  aria-describedby="kyu3-error">
+                    <optgroup label="Kyu">
+                      <option value="10 Kyu">10 Kyu</option>
+                      <option value="9 Kyu">9 Kyu</option>
+                      <option value="8 Kyu">8 Kyu</option>
+                      <option value="7 Kyu">7 Kyu</option>
+                      <option value="6 Kyu">6 Kyu</option>
+                      <option value="5 Kyu">5 Kyu</option>
+                      <option value="4 Kyu">4 Kyu</option>
+                      <option value="3 Kyu">3 Kyu</option>
+                      <option value="2 Kyu">2 Kyu</option>
+                      <option value="1 Kyu">1 Kyu</option>
+                    </optgroup>
+                    <optgroup label="Dan">
+                      <option value="1 Dan">1 Dan</option>
+                      <option value="2 Dan">2 Dan</option>
+                      <option value="3 Dan">3 Dan</option>
+                      <option value="4 Dan">4 Dan</option>
+                      <option value="5 Dan">5 Dan</option>
+                      <option value="6 Dan">6 Dan</option>
+                      <option value="7 Dan">7 Dan</option>
+                      <option value="8 Dan">8 Dan</option>
+                      <option value="9 Dan">9 Dan</option>
+                      <option value="10 Dan">10 Dan</option>
+                    </optgroup>
+                  </select>
+                  <span class="field-error" id="kyu3-error" hidden></span></div>
+              </div>
+            </section>
+            <fieldset class="events"><legend>Probe de concurs</legend>
+              <p class="events-description">Alege probele la care dorești înscrierea.</p>
+              <div class="checkbox-group">
+                <label>
+                  <input type="checkbox" name="proba" value="kata echipe"><span>Kata echipe</span></label>
+              </div>
+              <p class="category-note">Categoria echipei este stabilită după vârsta celui mai mare membru, fără restricție de grad.</p>
+              <div id="echipaCategories" class="category-preview" aria-live="polite"></div>
+            </fieldset>
+          </section>
+          <div class="form-actions">
+            <p>Verifică datele înainte de a trimite înscrierea.</p>
+            <button type="submit" class="submit-btn"><span class="button-idle">Trimite înscrierea</span><span class="button-busy">Se trimite…</span></button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <div id="popupModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-describedby="popupText">
       <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <p id="popupText"></p>
+        <button type="button" class="close-btn icon-button" aria-label="Închide mesajul"><svg class="" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+        <span class="dialog-icon"><svg class="" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-9v.01"/></svg></span>
+        <h2 id="popupTitle">Detalii înscriere</h2>
+        <p id="popupText" aria-live="polite"></p>
       </div>
     </div>
-
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <footer class="site-footer shell"><span class="footer-name">Victory Cup</span><span>Karate. Disciplină. Respect.</span></footer>
+    <script src="categories.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

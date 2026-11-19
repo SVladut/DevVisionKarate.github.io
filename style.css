@@ -1,294 +1,85 @@
-/* ===================== PALETĂ =====================
-   Roșu:       #e00000
-   Albastru:   #0046c7
-   Alb:        #ffffff
-   Fundal:     #0a0a0a
-===================================================== */
+@import url("common.css");
 
-/* ---------- RESET ---------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.registration-layout { display: grid; gap: var(--space-8); padding-block: var(--space-8) var(--space-12); align-items: start; }
+.intro .page-title { max-width: 12ch; font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.08; }
+.intro .page-description { max-width: 34ch; }
+.intro-rule { width: 40px; height: 4px; margin-bottom: var(--space-6); background: var(--accent); border-radius: 4px; }
+.club-context { margin-top: var(--space-8); }
+.club-context label { display: block; margin-bottom: var(--space-2); color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+input.club { width: 100%; max-width: 360px; min-height: 56px; padding: var(--space-4); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font-size: 16px; font-weight: 600; text-overflow: ellipsis; }
+input.club:hover { border-color: var(--line-strong); }
+input.club:active { background: var(--surface-subtle); }
+.intro-note { display: none; max-width: 32ch; margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.intro-note h2 { font-size: 14px; font-weight: 600; }
+.intro-note p { margin-top: var(--space-2); color: var(--muted); font-size: 14px; line-height: 1.75; }
+.registration-panel { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+.panel-header { padding: var(--space-6); }
+.panel-header h2 { font-size: 24px; line-height: 1.3; letter-spacing: -.035em; font-weight: 600; }
+.panel-header p { margin-top: var(--space-2); color: var(--muted); font-size: 14px; }
+.type-selector { margin-top: var(--space-6); }
+.field > label, .type-selector > label { display: block; margin-bottom: var(--space-2); color: var(--ink); font-size: 14px; font-weight: 500; }
+.required-marker { color: var(--muted); }
+.field input, .field select, .type-selector select { width: 100%; min-width: 0; min-height: 48px; padding: var(--space-3); border: 1px solid var(--line-strong); border-radius: 8px; background-color: var(--surface); color: var(--ink); font-size: 16px; line-height: 1.4; }
+.field input::placeholder { color: var(--muted); opacity: 1; }
+.field input:hover, .field select:hover, .type-selector select:hover { border-color: var(--muted); }
+.field input:focus, .field select:focus, .type-selector select:focus { border-color: var(--accent-ink); box-shadow: var(--focus); outline: none; }
+.field input:active, .field select:active, .type-selector select:active { background-color: var(--surface-subtle); }
+.field select, .type-selector select { appearance: none; padding-right: var(--space-10); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23667180' stroke-width='1.5' viewBox='0 0 24 24'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+.field input[aria-invalid="true"], .field select[aria-invalid="true"] { border-color: var(--error); }
+.field-error { display: block; margin-top: var(--space-2); color: var(--error); font-size: 14px; }
+.form-section { padding: var(--space-6); border-top: 1px solid var(--line); }
+.section-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.section-heading h3, .events legend { font-size: 16px; font-weight: 600; letter-spacing: -.02em; }
+.section-heading > span { color: var(--muted); font-size: 12px; }
+.fields-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); }
+.field-wide { grid-column: 1 / -1; }
+.events { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.events legend { float: left; width: 100%; }
+.events-description { clear: both; padding-top: var(--space-1); color: var(--muted); font-size: 14px; }
+.checkbox-group { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+.checkbox-group label { display: flex; align-items: center; gap: var(--space-3); min-height: 52px; padding: var(--space-3); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 500; }
+.checkbox-group label:hover { border-color: var(--line-strong); background: var(--surface-subtle); }
+.checkbox-group label:active { background: var(--surface-hover); transform: scale(.99); }
+.checkbox-group label:has(input:checked) { border-color: var(--accent-ink); background: var(--accent-soft); color: var(--accent-ink); }
+.checkbox-group label:has(input:focus-visible) { box-shadow: var(--focus); }
+.checkbox-group input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); flex: 0 0 auto; cursor: pointer; }
+.category-preview:not(:empty) { margin-top: var(--space-4); padding: var(--space-4); border-radius: 8px; background: var(--surface-subtle); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.category-preview p + p { margin-top: var(--space-2); }
+.category-error { color: var(--error); }
+.category-note { margin-top: var(--space-4); color: var(--muted); font-size: 14px; }
+.team-member { margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.team-member h4 { margin-bottom: var(--space-4); font-size: 14px; font-weight: 600; }
+.form-actions { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); border-top: 1px solid var(--line); background: var(--surface-subtle); }
+.form-actions p { color: var(--muted); font-size: 12px; }
+.submit-btn { min-height: 48px; }
+.button-busy { display: none; }
+.submit-btn:disabled .button-idle { display: none; }
+.submit-btn:disabled .button-busy { display: inline; }
+.modal { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: var(--space-4); background: rgb(12 18 28 / .48); backdrop-filter: blur(4px); }
+.modal-content { position: relative; width: min(100%, 440px); padding: var(--space-8); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 24px 64px rgb(0 0 0 / .16); animation: page-enter 200ms ease both; }
+.modal-content h2 { margin-top: var(--space-6); margin-bottom: var(--space-3); font-size: 24px; font-weight: 600; letter-spacing: -.04em; }
+.modal-content p { color: var(--muted); white-space: pre-line; overflow-wrap: anywhere; }
+.close-btn { position: absolute; top: var(--space-4); right: var(--space-4); }
+.dialog-icon { display: inline-flex; padding: var(--space-3); border-radius: 12px; background: var(--accent-soft); color: var(--accent-ink); }
+@media (min-width: 640px) {
+  .registration-layout { padding-block: var(--space-12) var(--space-16); gap: var(--space-10); }
+  .panel-header, .form-section, .form-actions { padding: var(--space-8); }
+  .checkbox-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .form-actions { flex-direction: row; align-items: center; justify-content: space-between; }
+  .form-actions p { max-width: 22ch; }
 }
-
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0a0a0a, #00132e);
-  color: #ffffff;
-  min-height: 100vh;
-  padding: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (min-width: 768px) {
+  .registration-layout { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--space-8); }
+  .intro { padding-top: var(--space-8); position: sticky; top: var(--space-8); }
+  .intro-note { display: block; }
+  .intro .page-title { font-size: 44px; }
+  .form-actions { align-items: stretch; flex-direction: column; }
+  .form-actions p { max-width: none; }
 }
-
-/* ---------- CONTAINER ---------- */
-.container {
-  width: 100%;
-  max-width: 550px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  padding: 35px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-align: center;
-  box-shadow: 
-    0 0 20px rgba(0, 70, 199, 0.4),
-    0 0 35px rgba(224, 0, 0, 0.35);
-}
-
-/* ---------- TITLU + LOGO ---------- */
-.title-with-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.logo-side {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 6px #e00000) drop-shadow(0 0 8px #0046c7);
-  transition: 0.25s;
-}
-.logo-side:hover { transform: scale(1.15); }
-
-/* ---------- BUTOANE PLĂȚI ---------- */
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 20px;
-}
-
-.plati-btn {
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-  color: #ffffff;
-  background: linear-gradient(135deg, #e00000, #0046c7);
-  box-shadow: 0 0 10px rgba(224, 0, 0, 0.4);
-  transition: 0.25s;
-}
-.plati-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 18px rgba(0, 70, 199, 0.6);
-}
-
-/* ---------- INPUTURI / SELECTURI ---------- */
-input,
-select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  background: rgba(0, 0, 0, 0.35);
-  color: #ffffff;
-  transition: 0.2s;
-}
-
-input:focus,
-select:focus {
-  border-color: #0046c7;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* Input club */
-input.club {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #e00000;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* ---------- SECȚIUNI FORMULAR ---------- */
-.form-section {
-  margin-top: 25px;
-  padding: 18px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: 0.25s;
-}
-.form-section:hover {
-  transform: scale(1.01);
-  border-color: #0046c7;
-}
-
-.hidden { display: none; }
-
-/* ---------- CHECKBOX — REFACTORED, CENTRAT ---------- */
-/* ---------- CHECKBOX CUSTOM — TEXT CENTRAT ---------- */
-.checkbox-group {
-  display: grid;
-  gap: 12px;
-  margin-top: 15px;
-}
-
-.checkbox-group label {
-  display: flex;
-  align-items: self-end;   /* CENTRARE VERTICALĂ */
-  gap: 12px;
-  padding: 12px 14px ;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  font-weight: 900;
-  transition: 0.2s;
-}
-
-.checkbox-group label:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: #0046c7;
-}
-
-/* Checkbox ascuns */
-.checkbox-group input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  border: 2px solid #ffffffaa;
-  background: rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  flex-shrink: 0;
-  position: relative;
-  transition: 0.25s;
-}
-
-/* Bifa — folosim ::after pentru ✔ */
-.checkbox-group input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #0046c7;
-  font-size: 14px;
-  font-weight: 900;
-}
-
-/* Când e bifat — schimbă doar fundal și contur */
-.checkbox-group input[type="checkbox"]:checked {
-  background-color: #ffffff;
-  border-color: #0046c7;
-}
-
-/* ---------- BUTON TRIMITE ---------- */
-.submit-btn {
-  width: 100%;
-  padding: 14px;
-  margin-top: 25px;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  background: linear-gradient(135deg, #0046c7, #e00000);
-  color: #ffffff;
-  transition: 0.25s;
-  box-shadow: 0 0 12px rgba(0, 70, 199, 0.5);
-}
-
-.submit-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 20px rgba(224, 0, 0, 0.6);
-}
-
-/* ---------- MODAL ---------- */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px);
-}
-
-.modal.hidden { display: none; }
-
-.modal-content {
-  padding: 25px 30px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #001736, #002c66);
-  color: white;
-  text-align: center;
-  box-shadow:
-    0 0 25px rgba(0, 70, 199, 0.6),
-    0 0 20px rgba(224, 0, 0, 0.45);
-  position: relative;
-  animation: pop 0.3s ease;
-}
-
-@keyframes pop {
-  from { transform: scale(0.8); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  right: 12px;
-  top: 10px;
-  font-size: 26px;
-  cursor: pointer;
-  transition: 0.25s;
-}
-.close-btn:hover {
-  color: #e00000;
-  transform: scale(1.15);
-}
-
-/* ---------- SELECTOR SPORTIV/ECHIPĂ ---------- */
-.type-selector {
-  margin-top: 25px;
-  padding: 15px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 12px rgba(0, 70, 199, 0.35);
-  transition: 0.25s;
-}
-
-.type-selector:hover {
-  transform: scale(1.02);
-  border-color: #0046c7;
-}
-
-.type-selector h3 {
-  margin-bottom: 12px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-/* ---------- DROPDOWN (Select) ---------- */
-select.custom-select {
-  background: rgba(0, 0, 0, 0.35);
-  color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-select.custom-select option {
-  background: #001736;
-  color: #ffffff;
-  padding: 12px;
-}
-
-select.custom-select:focus option {
-  background: #001736 !important;
-  color: #ffffff !important;
-}
-
-select.custom-select:hover {
-  border-color: #0046c7;
+@media (min-width: 1024px) {
+  .registration-layout { grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); gap: var(--space-16); padding-top: var(--space-16); }
+  .intro .page-title { font-size: 56px; }
+  .intro .page-description { font-size: 18px; }
+  .form-actions { flex-direction: row; align-items: center; }
+  .form-actions p { max-width: 22ch; }
 }

@@ -78,11 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
   showOnlySection(typeSelector.value);
   typeSelector.addEventListener("change", (e) => showOnlySection(e.target.value));
 
-  // definiții probe pe grupe (pot rămâne - nu mai validează obligatoriu)
-  const SPORT_PROBES = new Set(["traseu","joc_tehnic","kihon","kata","kumite","kumite_open"]);
-  const TRAD_PROBES = new Set(["kihon_t","kata_t","kihon_kumite_t","jiyu_kumite_t","kogo_kumite_t","j_kumite_t","fuku_go_t"]);
-  const ENBU_PROBES = new Set(["enbu","enbu_open"]);
-
   // helper: returneaza probele checkate doar din sectiunea activa
   const getCheckedProbesFromActiveSection = (type) => {
     let activeSection = sportivSection;
@@ -128,11 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return null;
   };
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const submitBtn = form.querySelector("button[type='submit']");
-    submitBtn.disabled = true;
-
+  const collectRegistrationData = () => {
     const type = typeSelector.value;
     const probe = getCheckedProbesFromActiveSection(type);
     const data = { tip: type, club: clubInput.value.trim(), probe };
@@ -163,11 +154,56 @@ document.addEventListener("DOMContentLoaded", () => {
       }));
     }
 
+    return data;
+  };
+
+  const updateCategoryPreview = () => {
+    const data = collectRegistrationData();
+    const preview = document.getElementById(`${data.tip}Categories`);
+    if (!preview) return;
+    preview.replaceChildren();
+    data.probe.forEach(probe => {
+      const line = document.createElement("p");
+      try {
+        const [code] = KarateCategories.getCategoryCodes({ ...data, probe: [probe] });
+        const category = KarateCategories.categories.find(category => category.code === code);
+        line.textContent = `${KarateCategories.probeLabels[probe]}: ${code} · ${category.ageLabel} · ${category.gradeLabel}`;
+      } catch (error) {
+        line.className = "category-error";
+        line.textContent = error.message;
+      }
+      preview.appendChild(line);
+    });
+  };
+
+  form.addEventListener("input", updateCategoryPreview);
+  form.addEventListener("change", updateCategoryPreview);
+  typeSelector.addEventListener("change", updateCategoryPreview);
+  updateCategoryPreview();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+    const data = collectRegistrationData();
+    const type = data.tip;
+
     const err = validateForm(data);
     if (err) {
       showPopup(err);
       submitBtn.disabled = false;
       return;
+    }
+
+    // Trimitem codurile exacte din Excel. Probele fără categorie nu ajung la API.
+    if (type === "sportiv" || type === "echipa") {
+      try {
+        data.probe = KarateCategories.getCategoryCodes(data);
+      } catch (error) {
+        showPopup(error.message);
+        submitBtn.disabled = false;
+        return;
+      }
     }
 
     try {
@@ -223,7 +259,9 @@ document.addEventListener("DOMContentLoaded", () => {
       showPopup(message);
 
       form.reset();
+      if (clubName) clubInput.value = clubName;
       showOnlySection(typeSelector.value);
+      updateCategoryPreview();
     } catch (error) {
       console.error(error);
       showPopup("Server în mentenanță sau eroare la trimitere.");

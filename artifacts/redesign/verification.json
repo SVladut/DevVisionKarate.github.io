@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "All four business/API/export/category scripts are byte-for-byte unchanged",
+    "All 3 pages: light/dark, 375/640/768/1024/1440px, no page overflow, labeled fields, self-hosted fonts",
+    "Native form validation retains its behavior and exposes visible, associated field errors",
+    "Individual registration: original endpoint/payload, exact category codes, reset, dialog focus trap/Escape/focus restoration",
+    "Invalid selections remain blocked; team registration keeps three members, oldest-member category and original reset behavior",
+    "Theme switch works with keyboard; theme preference and club query persist between pages",
+    "Actual Excel library exports original column labels, data, total, filename, and autofilter with no presentation-only text",
+    "Existing back-navigation route and club parameter preserved",
+    "Reduced-motion preference disables entrance animations and transitions",
+    "No uncaught browser JavaScript errors",
+    "Both payment empty states are visible and do not introduce fake table rows or alter zero totals"
+  ],
+  "liveWrites": false,
+  "paymentScreenshots": "Fixture data only; production API requests were intercepted during browser QA."
+}
